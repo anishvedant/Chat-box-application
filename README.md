@@ -1,6 +1,6 @@
 # Chat-Box Application
 
-This repository contains a secure chat application implemented using Python. The application uses RSA encryption for secure message exchange between clients and a server.
+Secure Chat Box Application demonstrates the use of socket programming and RSA encryption in Python. It is designed to provide a basic example of secure communication between multiple clients and a server.
 
 ## Features
 
