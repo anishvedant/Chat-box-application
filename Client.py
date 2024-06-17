@@ -1,15 +1,16 @@
-# import required modules
+# Import required modules
 import socket
 import threading
 import tkinter as tk
 from tkinter import scrolledtext
 from tkinter import messagebox
-from decrypto import RSACipher
+from decrypto import RSACipher  # Import custom RSA encryption class
 
-
+# Define server host and port
 HOST = '127.0.0.1'
 PORT = 8844
 
+# Define color and font constants
 DARK_GREY = '#121212'
 MEDIUM_GREY = '#1F1B24'
 OCEAN_BLUE = '#464EB8'
@@ -18,16 +19,19 @@ FONT = ("Helvetica", 17)
 BUTTON_FONT = ("Helvetica", 15)
 SMALL_FONT = ("Helvetica", 13)
 
+# Initialize RSA cipher
 cipher = RSACipher()
+
+# Create a TCP socket
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-
+# Function to add messages to the message box
 def add_message(message):
     message_box.config(state=tk.NORMAL)
     message_box.insert(tk.END, message + '\n')
     message_box.config(state=tk.DISABLED)
 
-
+# Function to connect to the server
 def connect():
     try:
         client.connect((HOST, PORT))
@@ -47,7 +51,7 @@ def connect():
     username_textbox.config(state=tk.DISABLED)
     username_button.config(state=tk.DISABLED)
 
-
+# Function to send a message to the server
 def send_message():
     message = message_textbox.get()
 
@@ -59,12 +63,11 @@ def send_message():
         print(encrypted)
         client.sendall(decrypted.encode())
         
-        
         message_textbox.delete(0, len(message))
     else:
         messagebox.showerror("Empty message", "Message cannot be empty")
 
-
+# Initialize the GUI
 root = tk.Tk()
 root.geometry("600x600")
 root.title("Client")
@@ -89,7 +92,7 @@ username_label.pack(side=tk.LEFT, padx=10)
 username_textbox = tk.Entry(top_frame, font=FONT, bg=MEDIUM_GREY, fg=WHITE, width=23)
 username_textbox.pack(side=tk.LEFT)
 
-username_button = tk.Button(top_frame, text="Join", font=BUTTON_FONT, bg=OCEAN_BLUE, fg=WHITE,command=connect)
+username_button = tk.Button(top_frame, text="Join", font=BUTTON_FONT, bg=OCEAN_BLUE, fg=WHITE, command=connect)
 username_button.pack(side=tk.LEFT, padx=15)
 root.bind('<RETURN>')
 
@@ -103,25 +106,20 @@ message_box = scrolledtext.ScrolledText(middle_frame, font=SMALL_FONT, bg=MEDIUM
 message_box.config(state=tk.DISABLED)
 message_box.pack(side=tk.TOP)
 
-
+# Function to listen for messages from the server
 def listen_for_messages_from_server(client):
     while 1:
-
         message = client.recv(2048).decode('utf-8')
         if message != '':
             username = message.split("~")[0]
             content = message.split('~')[1]
-
             add_message(f"[{username}] {content}")
-
         else:
-            messagebox.showerror("Error", "Message recevied from client is empty")
+            messagebox.showerror("Error", "Message received from client is empty")
 
-
-# main function
+# Main function to start the GUI event loop
 def main():
     root.mainloop()
-
 
 if __name__ == '__main__':
     main()
