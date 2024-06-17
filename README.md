@@ -24,12 +24,12 @@ Secure Chat Box Application demonstrates the use of socket programming and RSA e
 
 3. **Run the server**:
     ```bash
-    python server.py
+    python3 server.py
     ```
 
 4. **Run the client**:
     ```bash
-    python client.py
+    python3 client.py
     ```
 
 ## Usage
