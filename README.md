@@ -50,5 +50,16 @@ Secure Chat Box Application demonstrates the use of socket programming and RSA e
 - **Host and Port**: You can change the `HOST` and `PORT` variables in `server.py` and `client.py` to run the server and client on different addresses and ports.
 - **Encryption**: The RSA encryption keys can be customized in the `decrypto.py` module.
 
+## Contributing
+
+Contributions are welcome! Feel free to fork the repository and submit pull requests with your improvements and bug fixes.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+## Disclaimer
+
+Chat-box application enhances communication security but does not guarantee absolute protection against all forms of attacks. Users are advised to understand the limitations and potential risks associated with the implementation. Use this project responsibly and in compliance with applicable laws and regulations.
 
 
