@@ -13,8 +13,8 @@ Secure Chat Box Application demonstrates the use of socket programming and RSA e
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/secure-chat-app.git
-    cd secure-chat-app
+    git clone https://github.com/anishvedant/Chat-box-application.git
+    cd Chat-box-application
     ```
 
 2. **Install dependencies**:
