@@ -41,7 +41,7 @@ Secure Chat Box Application demonstrates the use of socket programming and RSA e
 
 ### Client
 
-1. Start the client by running `client.py`.
+1. Start multiple clients on different terminals by running `client.py`.
 2. Enter a username and connect to the server.
 3. Send and receive messages securely.
 
